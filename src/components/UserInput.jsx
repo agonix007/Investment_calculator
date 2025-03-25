@@ -9,6 +9,7 @@ export default function UserInput({ onValueChange, investmentDetails }) {
             id="initialInvestment"
             value={investmentDetails.initialInvestment}
             onChange={onValueChange}
+            required
           />
         </div>
 
@@ -19,6 +20,7 @@ export default function UserInput({ onValueChange, investmentDetails }) {
             id="annualInvestment"
             value={investmentDetails.annualInvestment}
             onChange={onValueChange}
+            required
           />
         </div>
       </div>
@@ -31,6 +33,7 @@ export default function UserInput({ onValueChange, investmentDetails }) {
             id="expectedReturn"
             value={investmentDetails.expectedReturn}
             onChange={onValueChange}
+            required
           />
         </div>
 
@@ -41,6 +44,7 @@ export default function UserInput({ onValueChange, investmentDetails }) {
             id="duration"
             value={investmentDetails.duration}
             onChange={onValueChange}
+            required
           />
         </div>
       </div>

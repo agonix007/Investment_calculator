@@ -4,8 +4,6 @@ import Header from "./components/Header";
 import UserInput from "./components/UserInput";
 import Results from "./components/Results";
 
-import { calculateInvestmentResults } from "./util/investment";
-
 const INVESTMENT_DETAILS = {
   initialInvestment: 10000,
   annualInvestment: 1200,
@@ -17,6 +15,8 @@ function App() {
   const [investmentDetails, setInvestmentDetails] =
     useState(INVESTMENT_DETAILS);
 
+  const inputIsValid = investmentDetails.duration >= 1;
+
   function handleValueChange(event) {
     setInvestmentDetails((prevInvestmentDetails) => {
       return {
@@ -26,9 +26,6 @@ function App() {
     });
   }
 
-  const annualData = calculateInvestmentResults(investmentDetails);
-  const initialInvestment = investmentDetails.initialInvestment;
-
   return (
     <>
       <Header />
@@ -36,7 +33,10 @@ function App() {
         onValueChange={handleValueChange}
         investmentDetails={investmentDetails}
       />
-      <Results annualData={annualData} initialInvestment={initialInvestment} />
+      {!inputIsValid && (
+        <p className="center">Duration must be at least 1 year.</p>
+      )}
+      {inputIsValid && <Results input={investmentDetails} />}
     </>
   );
 }
